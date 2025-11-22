@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "smart-services-app",
+    "name": "Smart Services App",
     "slug": "smart-services-app",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -8,8 +8,19 @@
     "scheme": "smartservicesapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/images/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.smartservices.app",
+      "infoPlist": {
+        "NSCameraUsageDescription": "This app needs access to your camera to take profile pictures.",
+        "NSPhotoLibraryUsageDescription": "This app needs access to your photo library to select profile pictures.",
+        "NSLocationWhenInUseUsageDescription": "This app needs your location to find nearby services."
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -18,6 +29,14 @@
         "backgroundImage": "./assets/images/android-icon-background.png",
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
+      "package": "com.smartservices.app",
+      "permissions": [
+        "CAMERA",
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE",
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION"
+      ],
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false
     },
@@ -27,6 +46,19 @@
     },
     "plugins": [
       "expo-router",
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Allow Smart Services to use your location to find nearby services."
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "The app needs access to your photos to let you upload a profile picture.",
+          "cameraPermission": "The app needs access to your camera to let you take a profile picture."
+        }
+      ],
       [
         "expo-splash-screen",
         {
